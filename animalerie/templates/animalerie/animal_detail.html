@@ -1,0 +1,44 @@
+{% extends 'animalerie/base.html' %}
+{% load static %}
+{% block title %}{{ animal.id_animal }}{% endblock %}
+
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <div class="card">
+                <h2 class="card-header lightgrey text-black">{{ animal.id_animal }}</h2>
+
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6"><img src="{{ animal.photo }}" alt="" width="100%"/></div>
+                        <div class="col-md-6">
+                            <p class="card-text">Type : {{ animal.type | capfirst }}</p>
+                            <p class="card-text">Race : {{ animal.race | capfirst }}</p>
+                            <p class="card-text">Etat : {{ animal.etat | capfirst }}</p>
+                            <p class="card-text">
+                                Lieu : <a class="text-black" href="{% url 'equipement_detail' id_equip=animal.lieu.id_equip %}" >{{ animal.lieu | capfirst }}</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                {% if message != ''%}
+                    <div class="alert alert-danger" role="alert">
+                        {{message}}
+                    </div>
+                {% endif %}
+
+                <div class="card-footer">
+                    <div class="row">
+                        <div class="col-lg-3 center"><a class="btn lightgrey text-black" href="{% url 'animal_detail' id_animal=animal.id_animal %}?action=reveiller">Réveiller</a></div>
+                        <div class="col-lg-3 center"><a class="btn lightgrey text-black" href="{% url 'animal_detail' id_animal=animal.id_animal %}?action=nourrir">Nourrir</a></div>
+                        <div class="col-lg-3 center"><a class="btn lightgrey text-black" href="{% url 'animal_detail' id_animal=animal.id_animal %}?action=divertir">Divertir</a></div>
+                        <div class="col-lg-3 center"><a class="btn lightgrey text-black" href="{% url 'animal_detail' id_animal=animal.id_animal %}?action=coucher">Coucher</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
