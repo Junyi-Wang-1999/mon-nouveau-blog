@@ -11,7 +11,7 @@ def animal_list(request):
         if 'animal' and 'equipement' in request.GET:
             id_equip = request.GET['equipement']
             animal = Animal.objects.get(id_animal=request.GET['animal'])
-            if id_equip == "litiere":
+            if id_equip == "litière":
                 message_type, message = animal.reveiller()
             elif id_equip == "mangeoire":
                 message_type, message = animal.nourrir()
@@ -49,6 +49,7 @@ def animal_detail(request, id_animal):
         'type': message_type,
         'message': message
     })
+
 
 def equipement_detail(request, id_equip):
     equipement = get_object_or_404(Equipement, id_equip=id_equip)

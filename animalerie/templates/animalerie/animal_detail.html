@@ -24,12 +24,6 @@
                     </div>
                 </div>
 
-                {% if message != ''%}
-                    <div class="alert alert-danger" role="alert">
-                        {{message}}
-                    </div>
-                {% endif %}
-
                 <div class="card-footer">
                     <div class="row">
                         <div class="col-lg-3 center"><a class="btn lightgrey text-black" href="{% url 'animal_detail' id_animal=animal.id_animal %}?action=reveiller">Réveiller</a></div>
